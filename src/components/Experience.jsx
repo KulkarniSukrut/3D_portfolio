@@ -58,7 +58,7 @@ function MacBook({ position, rotation }) {
         <planeGeometry args={[1.7, 1.1]} />
         <meshStandardMaterial 
           color="#fff" 
-          opacity={0} 
+          opacity={1} 
           transparent
           emissive="#fff"
           emissiveIntensity={0.1}
@@ -197,12 +197,6 @@ export default function Experience() {
       
       {/* MacBook */}
       <MacBook position={[0, 0, 0]} rotation={[0, 0, 0]} />
-      
-      {/* File Folder */}
-      <FileFolder position={[3, -1, -2]} />
-      
-      {/* iPad */}
-      <iPad position={[-3, -1, -2]} />
       
       {/* Environment */}
       <mesh position={[0, -2, -5]} rotation={[-Math.PI / 2, 0, 0]}>

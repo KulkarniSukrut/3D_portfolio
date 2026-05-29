@@ -3,7 +3,7 @@ import { Canvas } from '@react-three/fiber';
 import { Suspense } from 'react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import gsap from 'gsap';
-import Experience from './components/Experience';
+import WorkingPortfolio from './components/WorkingPortfolio';
 import LoadingScreen from './components/LoadingScreen';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -22,6 +22,142 @@ function App() {
       pinSpacing: false,
     });
 
+    // Text animations for section 1
+    gsap.fromTo('.section-1 h1', 
+      { opacity: 0, y: 50 },
+      { 
+        opacity: 1, 
+        y: 0,
+        duration: 1.5,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: '.scroll-section:nth-child(1)',
+          start: 'top center',
+          end: 'center center',
+          scrub: 1.2,
+        }
+      }
+    );
+
+    gsap.fromTo('.section-1 p', 
+      { opacity: 0, y: 30 },
+      { 
+        opacity: 1, 
+        y: 0,
+        duration: 1.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: '.scroll-section:nth-child(1)',
+          start: 'top center',
+          end: 'center center',
+          scrub: 1.2,
+          delay: 0.2
+        }
+      }
+    );
+
+    // Text animations for section 2
+    gsap.fromTo('.section-2 h2', 
+      { opacity: 0, x: -50 },
+      { 
+        opacity: 1, 
+        x: 0,
+        duration: 1.5,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: '.scroll-section:nth-child(2)',
+          start: 'top center',
+          end: 'center center',
+          scrub: 1.5,
+        }
+      }
+    );
+
+    gsap.fromTo('.section-2 p', 
+      { opacity: 0, x: 50 },
+      { 
+        opacity: 1, 
+        x: 0,
+        duration: 1.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: '.scroll-section:nth-child(2)',
+          start: 'center top',
+          end: 'center center',
+          scrub: 1.3,
+          delay: 0.3
+        }
+      }
+    );
+
+    // Text animations for section 3
+    gsap.fromTo('.section-3 h2', 
+      { opacity: 0, scale: 0.8 },
+      { 
+        opacity: 1, 
+        scale: 1,
+        duration: 1.5,
+        ease: "back.out(1.7)",
+        scrollTrigger: {
+          trigger: '.scroll-section:nth-child(3)',
+          start: 'top center',
+          end: 'center center',
+          scrub: 1.6,
+        }
+      }
+    );
+
+    // Text animations for section 4
+    gsap.fromTo('.section-4 h2', 
+      { opacity: 0, rotation: 5 },
+      { 
+        opacity: 1, 
+        rotation: 0,
+        duration: 1.5,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: '.scroll-section:nth-child(4)',
+          start: 'top center',
+          end: 'center center',
+          scrub: 1.4,
+        }
+      }
+    );
+
+    gsap.fromTo('.section-4 p', 
+      { opacity: 0, y: 30 },
+      { 
+        opacity: 1, 
+        y: 0,
+        duration: 1.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: '.scroll-section:nth-child(4)',
+          start: 'center top',
+          end: 'center center',
+          scrub: 1.3,
+          delay: 0.2
+        }
+      }
+    );
+
+    gsap.fromTo('.section-4 a', 
+      { opacity: 0, scale: 0.9 },
+      { 
+        opacity: 1, 
+        scale: 1,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: '.scroll-section:nth-child(4)',
+          start: 'center center',
+          end: 'bottom center',
+          scrub: 1.2,
+          delay: 0.4
+        }
+      }
+    );
+
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
@@ -39,7 +175,7 @@ function App() {
           gl={{ antialias: true, alpha: true }}
         >
           <Suspense fallback={null}>
-            <Experience />
+            <WorkingPortfolio />
           </Suspense>
         </Canvas>
       </div>
@@ -47,20 +183,20 @@ function App() {
       {/* Scroll Sections */}
       <div className="relative z-20">
         {/* Section 1: Landing */}
-        <section className="scroll-section flex items-center justify-center">
+        <section className="scroll-section section-1 flex items-center justify-center">
           <div className="text-center">
-            <h1 className="text-6xl font-bold mb-4 opacity-0">
+            <h1 className="text-6xl font-bold mb-4">
               Welcome to My Portfolio
             </h1>
-            <p className="text-xl opacity-0">
+            <p className="text-xl">
               Scroll to explore my 3D experience
             </p>
           </div>
         </section>
 
         {/* Section 2: About Me */}
-        <section className="scroll-section flex items-center justify-center">
-          <div className="max-w-4xl mx-auto px-8 text-center opacity-0">
+        <section className="scroll-section section-2 flex items-center justify-center">
+          <div className="max-w-4xl mx-auto px-8 text-center">
             <h2 className="text-5xl font-bold mb-8">About Me</h2>
             <div className="space-y-6 text-lg leading-relaxed">
               <p>
@@ -80,8 +216,8 @@ function App() {
         </section>
 
         {/* Section 3: Projects */}
-        <section className="scroll-section flex items-center justify-center">
-          <div className="max-w-6xl mx-auto px-8 opacity-0">
+        <section className="scroll-section section-3 flex items-center justify-center">
+          <div className="max-w-6xl mx-auto px-8">
             <h2 className="text-5xl font-bold mb-12 text-center">Featured Projects</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Project cards will be populated by 3D animation */}
@@ -90,8 +226,8 @@ function App() {
         </section>
 
         {/* Section 4: Contact */}
-        <section className="scroll-section flex items-center justify-center">
-          <div className="max-w-2xl mx-auto px-8 text-center opacity-0">
+        <section className="scroll-section section-4 flex items-center justify-center">
+          <div className="max-w-2xl mx-auto px-8 text-center">
             <h2 className="text-5xl font-bold mb-8">Get In Touch</h2>
             <p className="text-xl mb-8">
               Let's create something amazing together
